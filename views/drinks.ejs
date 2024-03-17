@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drink Menu</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center;
+      }
+      .main-container {
+        max-width: 800px;
+        margin: 50px auto;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      h1 {
+        color: #333;
+        width: 100%;
+      }
+      .drinks-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .drink {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 10px;
+        background-color: #f9f9f9;
+        width: 200px;
+        text-align: center;
+      }
+      .drink img {
+        max-width: 100px;
+        border-radius: 8px;
+      }
+      .drink h2 {
+        margin-top: 10px;
+      }
+      .drink p {
+        margin: 10px 0;
+      }
+      .logout-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        align-self: flex-end;
+        margin-top: 10px;
+      }
+      .logout-btn:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="container">
+        <a href="/logout" class="logout-btn">Logout</a>
+        <h1>Drink Menu</h1>
+      </div>
+      <div class="drinks-container">
+        <% drinks.forEach(function(drink) { %>
+        <div class="drink">
+          <img src="<%= drink.image %>" alt="<%= drink.name %>" />
+          <h2><%= drink.name %></h2>
+          <p>Type: <%= drink.type %></p>
+          <p>Price: $<%= drink.price.toFixed(2) %></p>
+        </div>
+        <% }); %>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    //read JWT token from HTTP cookie
+    const token = "<%= token %>";
+  </script>
+</html>
